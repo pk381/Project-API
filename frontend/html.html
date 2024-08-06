@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <button id="click">Sign Up</button>
+    <button id="login">Login</button>
+    <button id="main">Main</button>
+    <button id="add">add api</button>
+    <button id="fetch">get all</button>
+
+
+
+    <div id="show">
+
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+<script>
+
+    let show = document.getElementById('show');
+
+    console.log(Date());
+
+    let data = {
+        name: "prabhat kumar",
+        email: "email.com",
+        password: "password",
+        phone: "8764862642",
+        api_id: "66ab24e65028fc0e4e0d292c"
+    }
+    document.getElementById('click').addEventListener('click', () => {
+
+        axios.post('http://localhost:4000/user/sign-up', data).then(res => {
+            console.log(res);
+            show.innerText = JSON.stringify(res.data);
+        }).catch(err => {
+            show.innerText = JSON.stringify(err.response.data);
+            console.log(err)
+        })
+    })
+
+    document.getElementById('login').addEventListener('click', () => {
+
+        axios.post('http://localhost:4000/user/log-in', data).then(res => {
+            console.log(res);
+            localStorage.setItem('token', res.data.token);
+            show.innerText = JSON.stringify(res.data);
+        }).catch(err => {
+            show.innerText = JSON.stringify(err.response.data);
+            console.log(err)
+        })
+    })
+
+    document.getElementById('main').addEventListener('click', () => {
+
+        axios.post('http://localhost:4000/purchase/api', {
+            api_id: '66ab24e65028fc0e4e0d292c'
+        }, {
+            headers: {
+                Authorization: localStorage.getItem('token')
+            }
+        }).then(res => {
+            console.log(res);
+            show.innerText = JSON.stringify(res.data);
+        }).catch(err => {
+            show.innerText = JSON.stringify(err.response.data);
+            console.log(err)
+        })
+    })
+    document.getElementById('add').addEventListener('click', () => {
+
+        axios.post('http://localhost:4000/admin/add-api', {
+            base_url: "http://localhost:4000/products"
+        }, {
+            headers: {
+                Authorization: localStorage.getItem('token')
+            }
+        }).then(res => {
+            console.log(res);
+            show.innerText = JSON.stringify(res.data);
+        }).catch(err => {
+            show.innerText = JSON.stringify(err.response.data);
+            console.log(err)
+        })
+    })
+    document.getElementById('fetch').addEventListener('click', () => {
+
+        axios.get('http://localhost:4000/api-request/getall', {
+            headers: {
+                Authorization: localStorage.getItem('token'),
+                user_api_key: '701b60af-ebb6-4772-b0fd-3c36b'
+            }
+        }).then(res => {
+            console.log(res);
+            show.innerText = JSON.stringify(res.data);
+        }).catch(err => {
+            show.innerText = JSON.stringify(err.response.data);
+            console.log(err)
+        })
+    })
+
+
+    console.log(new Date());
+</script>
+
+</html>
