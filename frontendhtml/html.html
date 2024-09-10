@@ -15,6 +15,8 @@
     <button id="main">Main</button>
     <button id="add">add api</button>
     <button id="fetch">get all</button>
+    <button id="byname">by name</button>
+
 
 
 
@@ -97,7 +99,24 @@
         axios.get('http://localhost:4000/api-request/getall', {
             headers: {
                 Authorization: localStorage.getItem('token'),
-                user_api_key: '701b60af-ebb6-4772-b0fd-3c36b'
+                user_api_key: '406f63bf-cd16-4245-b263-b5cf029ac1d0'
+            }
+        }).then(res => {
+            console.log(res);
+            show.innerText = JSON.stringify(res.data);
+        }).catch(err => {
+            show.innerText = JSON.stringify(err.response.data);
+            console.log(err)
+        })
+    })
+
+    document.getElementById('byname').addEventListener('click', () => {
+
+        axios.get(`http://localhost:4000/api-request/getbycategory/${"pencil"}`,
+         {
+            headers: {
+                Authorization: localStorage.getItem('token'),
+                user_api_key: '406f63bf-cd16-4245-b263-b5cf029ac1d0'
             }
         }).then(res => {
             console.log(res);

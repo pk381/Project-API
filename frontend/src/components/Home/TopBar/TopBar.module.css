@@ -1,0 +1,26 @@
+.container{
+    height: 7%;
+    background-color: aqua;
+    width: 100vw;
+    display: flex;
+}
+
+.logoContainer{
+    /* background-color: rgb(19, 37, 37); */
+    width: 20%;
+}
+
+.mainContainer{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+}
+
+.links{
+    background-color: red;
+}

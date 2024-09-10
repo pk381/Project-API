@@ -19,8 +19,6 @@ exports.creatAPIKey = async (req, res, next) => {
 
         newPurchase = await newPurchase.save();
 
-        // console.log(newPurchase);
-
         res.status(201).json({ purchase: newPurchase })
 
     }

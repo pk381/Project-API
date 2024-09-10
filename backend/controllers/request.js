@@ -1,20 +1,63 @@
-const Purchase = require('../models/purchase');
 const Api = require('../models/api');
-const Request = require('../models/request');
 const Product = require('../models/product');
+const Request = require('../models/request');
 
+exports.getAll = async (req, res, next) => {
+    try {
 
-exports.getRequests = async (req, res, next)=>{
-    try{
-        const purchases = await Purchase.find({user_id: req.user._id, user_api_key: req.header("user_api_key")});
-
-        console.log(purchases);
-
-        const products = await Product.find();
-
-        res.status(201).json(products)
+        if (req.purchase != null) {
+            req.purchase.hit_count += 1;
+            await req.purchase.save();
+            const products = await Product.find();
+            res.status(201).json({ message: "Success", products: products })
+        }
     }
-    catch(err){
+    catch (err) {
+        console.log(err);
+    }
+}
+
+exports.getByName = async (req, res, next) => {
+    try {
+
+        if (req.purchase != null) {
+            req.purchase.hit_count += 1;
+            await req.purchase.save();
+            const products = await Product.find({ name: { $regex: req.params.name, $options: 'i' } });
+            res.status(201).json({ message: "Success", products: products })
+        }
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+exports.getByID = async (req, res, next) => {
+    try {
+        if (req.purchase != null) {
+            req.purchase.hit_count += 1;
+            await req.purchase.save();
+            const products = await Product.find({ _id: req.params.id });
+            res.status(201).json({ message: "Success", products: products })
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+exports.getByCategory = async (req, res, next) => {
+    try {
+
+        if (req.purchase != null) {
+            req.purchase.hit_count += 1;
+            await req.purchase.save();
+            const products = await Product.find({ category: req.params.category });
+            res.status(201).json({ message: "Success", products: products })
+        }
+    }
+    catch (err) {
         console.log(err);
     }
 }

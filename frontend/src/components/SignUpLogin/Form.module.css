@@ -1,0 +1,112 @@
+.container {
+    display: flex;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    background-color: lightgray;
+    padding-bottom: 10px;
+    width: 600px;
+    /* visibility: hidden; */
+    /* opacity: 0; */
+    /* transition: 0.3s; */
+    border-radius: 15px;
+    /* z-index: 10; */
+  }
+  .container.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 0.8;
+    transition: 0.3s;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    margin-top: 5px;
+    width: 100%;
+  }
+  
+  .text {
+    font-size: 15px;
+    margin-top: 20px;
+    font-weight: 500;
+    color: black;
+  }
+  
+  .inputs {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .input{
+      display: flex;
+      align-items: center;
+      margin: auto;
+      width: 300px;
+      height: 30px;
+      background-color: transparent;
+      border-bottom: 1px solid rgb(112, 110, 110);
+  }
+  
+  .input img{
+      margin: 0px 10px;
+      /* height: 20px; */
+  }
+  
+  .input input{
+      height: 50px;
+      width: 400px;
+      background-color: transparent;
+      border: transparent;
+      outline: none;
+      font-size: 14px;
+      padding-left: 5px;
+  }
+  .forgot-password, .create-account{
+      margin-top: 10px;
+      justify-content: center;
+      font-size: 12px;
+      display: flex;
+  }
+  
+  .forgot-password span, .create-account span{
+    color: blue;
+    cursor: pointer;
+  }
+  .forgot-password p{
+    width: 300px;
+  }
+  
+  .submit-container{
+      display: flex;
+      gap: 30px;
+     justify-content: center;
+     margin-top: 10px;
+     margin-bottom: 50px;
+  }
+  
+  .submit{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 30px;
+      color: white;
+      background-color: rgb(145, 145, 152);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+  }
+  
+  .submit:hover{
+  
+    background-color: #004d7a;
+    color: white;
+  }

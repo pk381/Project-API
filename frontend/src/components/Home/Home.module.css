@@ -1,0 +1,13 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.subContainer{
+    background-color: rgb(160, 137, 137);
+    width: 80%;
+}

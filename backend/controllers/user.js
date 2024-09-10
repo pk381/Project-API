@@ -8,7 +8,6 @@ function generateToken(id){
 }
 
 exports.postLogin = async (req, res, next) => {
-
   try {
 
     const user = await User.find({email: req.body.email});
@@ -54,11 +53,8 @@ exports.postSignUp = async (req, res, next) => {
               isPremiumUser: false,
               totalExpense: 0
             });
-
             user = await user.save();
-
             res.status(201).json({message: "userCreated", user: user });
-
         })
     } else {
       res.status(403).json({ message: "userExist" });
@@ -73,8 +69,6 @@ exports.addAPI = async (req,res, next)=>{
 
   try{
     console.log(req.body)
-
-    
   }
   catch(err){
     console.log(err)
